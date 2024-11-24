@@ -112,7 +112,7 @@ sudo rm /usr/local/bin/service_uptime_monitor.sh
 2. Remove the configuration file:
 
 ```bash
-sudo rm -r /etc/service_uptime_monitor.conf
+sudo rm /etc/service_uptime_monitor.conf
 ```
 
 3. Remove the cron job:
@@ -125,6 +125,12 @@ sudo rm /etc/cron.d/service_uptime_monitor
 
 ```bash
 sudo rm /var/log/service_uptime_monitor.log
+```
+
+5. Remove the logrotate configuration:
+
+```bash
+sudo rm /etc/logrotate.d/service_uptime_monitor
 ```
 
 ## Requirements
