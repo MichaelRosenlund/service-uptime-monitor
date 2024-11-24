@@ -1,0 +1,10 @@
+/var/log/service_uptime_monitor.log {
+    size 10M               # Rotate the log file once it reaches 10 MB
+    daily                  # Rotate daily (alternatively, you could use 'weekly')
+    missingok              # Don't fail if the log file is missing
+    rotate 7               # Keep 7 days' worth of logs (delete older files)
+    compress               # Compress old log files (e.g., check_services.log.1.gz)
+    delaycompress          # Delay compression until the next rotation
+    notifempty             # Don't rotate the log if it’s empty
+    create 644 root root   # Create new log files with specific permissions
+}

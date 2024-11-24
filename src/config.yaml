@@ -1,0 +1,6 @@
+# Example values
+# services:
+#   - name: nginx
+#     endpoint: http://uptime-kuma.local/api/push/some-unique-id?status=up
+#   - name: postgresql
+#     endpoint: http://uptime-kuma.local/api/push/another-unique-id?status=up

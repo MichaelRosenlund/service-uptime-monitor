@@ -1,0 +1,1 @@
+*/10 * * * * root /usr/local/bin/service_uptime_monitor.sh >> /var/log/service_uptime_monitor.log 2>&1
