@@ -1,5 +1,5 @@
-CONFIG_FILE="/etc/service_uptime_monitor.yaml"
-SERVICES=$(sed -n "/\[services\]/,/\[/{/\[/!{/\S/ p}}" "$CONFIG_FILE")
+CONFIG_FILE="/etc/service_uptime_monitor.conf"
+SERVICES=$(sed -n "/\[services\]/,/\[/{/\[/!{/^#/!{/\S/ p}}}" "$CONFIG_FILE")
 
 for service in $SERVICES; do
     IFS="=" read -r name endpoint <<< "$service"
