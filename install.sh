@@ -2,11 +2,11 @@
 
 # Define installation paths
 SCRIPT_SRC="src/service_uptime_monitor.sh"
-CONFIG_SRC="src/service_uptime_monitor.yaml"
+CONFIG_SRC="src/service_uptime_monitor.conf"
 CRON_SRC="src/service_uptime_monitor"
 CRON_DEST="/etc/cron.d/service_uptime_monitor"
 SCRIPT_DEST="/usr/local/bin/service_uptime_monitor.sh"
-CONFIG_DEST="/etc/service_uptime_monitor.yaml"
+CONFIG_DEST="/etc/service_uptime_monitor.conf"
 LOG_FILE="/var/log/service_uptime_monitor.log"
 
 # Check for root privileges
