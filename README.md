@@ -23,16 +23,14 @@ cd service-uptime-monitor
 
 ### 2. Modify Configuration
 
-Edit src/service_uptime_monitor.yaml to include the services you want to monitor and their corresponding Uptime Kuma endpoints.
+Edit src/service_uptime_monitor.conf to include the services you want to monitor and their corresponding Uptime Kuma endpoints.
 
 Example:
 
-```yaml
-services:
-  - name: nginx
-    endpoint: http://uptime-kuma.local/api/push/some-unique-id?status=up
-  - name: postgresql
-    endpoint: http://uptime-kuma.local/api/push/another-unique-id?status=up
+```conf
+[services]
+nginx=http://uptime-kuma.local/api/push/some-unique-id?status=up
+mysql=http://uptime-kuma.local/api/push/another-unique-id?status=up
 ```
 
 ### 3. Run the Installation Script
@@ -44,7 +42,7 @@ sudo bash ./install.sh
 This will:
 
 1. Copy the script to /usr/local/bin.
-2. Copy the configuration file to /etc/service_uptime_monitor.
+2. Copy the configuration file to /etc/service_uptime_monitor.conf.
 3. Set up a cron job in /etc/cron.d.
 4. Create a log file in /var/log/service_uptime_monitor.log.
 
@@ -81,16 +79,14 @@ The cron job ensures the script runs every 10 minutes (configurable).
 
 ## Configuration
 
-### Example `service_uptime_monitor.yaml`
+### Example `service_uptime_monitor.conf`
 
 Config file
 
-```yaml
-services:
-  - name: nginx
-    endpoint: http://uptime-kuma.local/api/push/some-unique-id?status=up
-  - name: postgresql
-    endpoint: http://uptime-kuma.local/api/push/another-unique-id?status=up
+```conf
+[services]
+nginx=http://uptime-kuma.local/api/push/some-unique-id?status=up
+mysql=http://uptime-kuma.local/api/push/another-unique-id?status=up
 ```
 
 Cron file
@@ -116,7 +112,7 @@ sudo rm /usr/local/bin/service_uptime_monitor.sh
 2. Remove the configuration file:
 
 ```bash
-sudo rm -r /etc/service_uptime_monitor.yaml
+sudo rm -r /etc/service_uptime_monitor.conf
 ```
 
 3. Remove the cron job:
