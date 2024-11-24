@@ -1,9 +1,8 @@
 CONFIG_FILE="/etc/service_uptime_monitor.yaml"
-SERVICES=$(yq '.services[]' "$CONFIG_FILE")
+SERVICES=$(sed -n "/\[services\]/,/\[/{/\[/!{/\S/ p}}" "$CONFIG_FILE")
 
 for service in $SERVICES; do
-    name=$(echo "$service" | yq '.name')
-    endpoint=$(echo "$service" | yq '.endpoint')
+    IFS="=" read -r name endpoint <<< "$service"
 
     echo "Checking service: $name"
     if systemctl is-active --quiet "$name"; then
