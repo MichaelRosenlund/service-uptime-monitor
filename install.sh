@@ -3,11 +3,13 @@
 # Define installation paths
 SCRIPT_SRC="src/service_uptime_monitor.sh"
 CONFIG_SRC="src/service_uptime_monitor.conf"
-CRON_SRC="src/service_uptime_monitor"
+CRON_SRC="src/service_uptime_monitor_cron"
+LOGROTATE_SRC="src/service_uptime_monitor_logrotate"
 CRON_DEST="/etc/cron.d/service_uptime_monitor"
 SCRIPT_DEST="/usr/local/bin/service_uptime_monitor.sh"
 CONFIG_DEST="/etc/service_uptime_monitor.conf"
 LOG_FILE="/var/log/service_uptime_monitor.log"
+LOGROTATE_DEST="/etc/logrotate.d/service_uptime_monitor"
 
 # Check for root privileges
 if [[ $EUID -ne 0 ]]; then
@@ -42,8 +44,21 @@ echo "Creating log file at $LOG_FILE..."
 touch "$LOG_FILE"
 chmod 644 "$LOG_FILE"
 
-# Reload cron service
-echo "Reloading cron service..."
-systemctl reload cron
+# Copy logrotate file
+echo "Installing logrotate configuration at $LOGROTATE_DEST..."
+cp "$LOGROTATE_SRC" "$LOGROTATE_DEST"
+chmod 644 "$LOGROTATE_DEST"
+
+# Test the script
+echo "Testing the script..."
+"$SCRIPT_DEST"
+
+# Check the exit status of the test
+if [ $? -eq 0 ]; then
+    echo "Test successful!"
+else
+    echo "Test failed. Please check the configuration and try again."
+    exit 1
+fi
 
 echo "Installation complete!"
