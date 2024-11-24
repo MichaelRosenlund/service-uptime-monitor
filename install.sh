@@ -19,11 +19,6 @@ fi
 
 echo "Installing service_uptime_monitor script and configuration..."
 
-# Create destination directories
-echo "Creating necessary directories..."
-mkdir -p /etc/service_uptime_monitor
-mkdir -p /var/log
-
 # Copy script
 echo "Copying script to $SCRIPT_DEST..."
 cp "$SCRIPT_SRC" "$SCRIPT_DEST"

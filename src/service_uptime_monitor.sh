@@ -1,3 +1,5 @@
+#!/bin/bash
+
 CONFIG_FILE="/etc/service_uptime_monitor.conf"
 SERVICES=$(sed -n "/\[services\]/,/\[/{/\[/!{/^#/!{/\S/ p}}}" "$CONFIG_FILE")
 
