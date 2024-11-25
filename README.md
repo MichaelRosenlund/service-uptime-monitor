@@ -42,9 +42,17 @@ sudo bash ./install.sh
 This will:
 
 1. Copy the script to /usr/local/bin.
-2. Copy the configuration file to /etc/service_uptime_monitor.conf.
-3. Set up a cron job in /etc/cron.d.
-4. Create a log file in /var/log/service_uptime_monitor.log.
+2. Set up a cron job in /etc/cron.d.
+3. Create a log file in /var/log/service_uptime_monitor.log.
+4. Prompt you to enter the services you want to monitor and their corresponding Uptime Kuma endpoints.
+5. Save the configuration to /etc/service_uptime_monitor.conf.
+
+During the installation, you'll be asked to enter service names and their Uptime Kuma endpoints. For each service:
+
+1. Enter the service name (e.g., nginx, mysql)
+2. Enter the corresponding Uptime Kuma endpoint URL
+3. Repeat for all services you want to monitor
+4. Press Enter without entering a service name when you're done
 
 ### 4. Verify Installation
 
@@ -147,3 +155,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Acknowledgments
 
 Uptime Kuma for providing an excellent self-hosted monitoring tool.
+

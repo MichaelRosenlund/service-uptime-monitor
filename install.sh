@@ -24,10 +24,19 @@ echo "Copying script to $SCRIPT_DEST..."
 cp "$SCRIPT_SRC" "$SCRIPT_DEST"
 chmod +x "$SCRIPT_DEST"
 
-# Copy config file
-echo "Copying configuration to $CONFIG_DEST..."
+# Set up configuration
+echo "Setting up configuration..."
 cp "$CONFIG_SRC" "$CONFIG_DEST"
 chmod 600 "$CONFIG_DEST"
+
+while true; do
+    read -p "Enter service name (or press Enter to finish): " service_name
+    if [ -z "$service_name" ]; then
+        break
+    fi
+    read -p "Enter Uptime Kuma endpoint URL for $service_name: " endpoint_url
+    echo "$service_name=$endpoint_url" >> "$CONFIG_DEST"
+done
 
 # Copy cron file
 echo "Installing cron job at $CRON_DEST..."
