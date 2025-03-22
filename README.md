@@ -21,19 +21,7 @@ git clone https://github.com/MichaelRosenlund/service-uptime-monitor.git
 cd service-uptime-monitor
 ```
 
-### 2. Modify Configuration
-
-Edit src/service_uptime_monitor.conf to include the services you want to monitor and their corresponding Uptime Kuma endpoints.
-
-Example:
-
-```conf
-[services]
-nginx=http://uptime-kuma.local/api/push/some-unique-id?status=up
-mysql=http://uptime-kuma.local/api/push/another-unique-id?status=up
-```
-
-### 3. Run the Installation Script
+### 2. Run the Installation Script
 
 ```bash
 sudo bash ./install.sh
@@ -54,7 +42,17 @@ During the installation, you'll be asked to enter service names and their Uptime
 3. Repeat for all services you want to monitor
 4. Press Enter without entering a service name when you're done
 
-### 4. Verify Installation
+When the installation is done the monitored services, are entered into the configuration file, located at `/etc/service_uptime_monitor.conf` this file can be modified any time if sensors are to be removed, modified or deleted.
+
+Examples:
+
+```conf
+[services]
+nginx=http://uptime-kuma.local/api/push/some-unique-id?status=up
+mysql=http://uptime-kuma.local/api/push/another-unique-id?status=up
+```
+
+### 3. Verify Installation
 
 Ensure the cron job is installed:
 
